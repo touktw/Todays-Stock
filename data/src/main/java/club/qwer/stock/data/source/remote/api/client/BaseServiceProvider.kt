@@ -1,6 +1,7 @@
-package club.qwer.stock.data.source.remote.api
+package club.qwer.stock.data.source.remote.api.client
 
 import club.qwer.stock.data.BuildConfig
+import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.Interceptor
@@ -39,6 +40,7 @@ abstract class BaseServiceProvider<T>(
             .client(createOkHttpClient())
             .addConverterFactory(NullOnEmptyConverterFactory())
             .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
             .build()
 
         return retrofit.create(serviceClass)

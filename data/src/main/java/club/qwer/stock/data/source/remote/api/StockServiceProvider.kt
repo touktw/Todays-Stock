@@ -1,9 +1,6 @@
 package club.qwer.stock.data.source.remote.api
 
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import club.qwer.stock.data.source.remote.api.client.BaseServiceProvider
 import javax.inject.Inject
 
 class StockServiceProvider @Inject constructor() : BaseServiceProvider<StockService>(

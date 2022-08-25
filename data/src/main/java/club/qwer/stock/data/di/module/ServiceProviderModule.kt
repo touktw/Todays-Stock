@@ -1,6 +1,6 @@
-package club.qwer.stock.data.source.remote.api
+package club.qwer.stock.data.di.module
 
-import dagger.Binds
+import club.qwer.stock.data.source.remote.api.StockServiceProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

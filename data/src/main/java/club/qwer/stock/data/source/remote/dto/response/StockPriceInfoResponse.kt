@@ -1,4 +1,4 @@
-package club.qwer.stock.data.response
+package club.qwer.stock.data.source.remote.dto.response
 
 data class StockPriceInfoResponse(
     val response: Response
