@@ -40,6 +40,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":data"))
 
     implementation(Libraries.core)
     implementation(Libraries.ui)

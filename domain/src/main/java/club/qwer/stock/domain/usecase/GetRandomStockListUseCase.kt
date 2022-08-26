@@ -1,8 +1,7 @@
 package club.qwer.stock.domain.usecase
 
-import club.qwer.stock.data.repository.StockRepository
 import club.qwer.stock.domain.model.StockInfo
-import club.qwer.stock.domain.model.toStockInfo
+import club.qwer.stock.domain.repository.StockRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -23,7 +22,7 @@ class GetRandomStockListUseCase @Inject constructor(
             val randomCode = Random(System.currentTimeMillis()).nextInt(STRN_CODE_RANGE)
             val list = stockRepository.getStockInfoList(
                 likeCode = randomCode
-            ).map { it.toStockInfo() }
+            )
             emit(list)
         }.flowOn(Dispatchers.Default)
     }

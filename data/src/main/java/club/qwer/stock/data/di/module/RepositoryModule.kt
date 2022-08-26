@@ -1,7 +1,7 @@
 package club.qwer.stock.data.di.module
 
-import club.qwer.stock.data.repository.StockRepository
 import club.qwer.stock.data.repository.StockRepositoryImpl
+import club.qwer.stock.domain.repository.StockRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

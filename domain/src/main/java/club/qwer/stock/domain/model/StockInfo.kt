@@ -1,7 +1,5 @@
 package club.qwer.stock.domain.model
 
-import club.qwer.stock.data.model.StockInfoModel
-
 data class StockInfo(
     val name: String,
     val code: String,
@@ -28,17 +26,4 @@ enum class StockMarketType {
             }
         }
     }
-}
-
-fun StockInfoModel.toStockInfo(): StockInfo {
-    return StockInfo(
-        name = name,
-        code = code,
-        marketCap = marketCap,
-        openPrice = openPrice,
-        closingPrice = closingPrice,
-        highPrice = highPrice,
-        lowPrice = lowPrice,
-        marketType = StockMarketType.get(marketType)
-    )
 }

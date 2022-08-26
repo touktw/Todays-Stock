@@ -36,7 +36,6 @@ android {
 
 dependencies {
 
-    implementation(project(":data"))
     implementation(Libraries.core)
     implementation(Libraries.async)
     implementation(Libraries.di)
