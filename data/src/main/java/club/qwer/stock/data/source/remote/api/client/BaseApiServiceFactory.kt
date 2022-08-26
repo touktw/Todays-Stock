@@ -1,6 +1,7 @@
-package club.qwer.stock.data.source.remote.api
+package club.qwer.stock.data.source.remote.api.client
 
 import club.qwer.stock.data.BuildConfig
+import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.Interceptor
@@ -14,7 +15,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.lang.reflect.Type
 import java.util.concurrent.TimeUnit
 
-abstract class BaseServiceProvider<T>(
+abstract class BaseApiServiceFactory<T>(
     private val serviceClass: Class<T>,
     private val baseUrl: String,
     private val headerInterceptor: Interceptor = DefaultHeaderInterceptor()
@@ -39,6 +40,7 @@ abstract class BaseServiceProvider<T>(
             .client(createOkHttpClient())
             .addConverterFactory(NullOnEmptyConverterFactory())
             .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
             .build()
 
         return retrofit.create(serviceClass)

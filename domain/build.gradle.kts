@@ -36,12 +36,11 @@ android {
 
 dependencies {
 
+    implementation(project(":data"))
     implementation(Libraries.core)
-    implementation(Libraries.network)
     implementation(Libraries.async)
-    implementation(Libraries.etc)
     implementation(Libraries.di)
-    implementation(Libraries.database)
+    implementation(Libraries.etc)
 
     testImplementationAll()
 }

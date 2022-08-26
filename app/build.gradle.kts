@@ -39,9 +39,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":data"))
+    implementation(project(":domain"))
 
-    implementation(Libraries.androidCore)
+    implementation(Libraries.core)
     implementation(Libraries.ui)
     implementation(Libraries.network)
     implementation(Libraries.async)

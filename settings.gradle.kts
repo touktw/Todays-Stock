@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "Todays Stock"
 include(":app")
 include(":data")
+include(":domain")

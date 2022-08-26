@@ -17,6 +17,7 @@ object Libraries {
         // Network
         const val Retrofit = "2.9.0"
         const val Okhttp = "4.9.3"
+        const val Sandwich = "1.2.7"
 
         // Coroutines
         const val Coroutines = "1.6.1"
@@ -49,7 +50,11 @@ object Libraries {
         val type: Type
     )
 
-    const val Kotlin = "org.jetbrains.kotlin:kotlin-sdtlib-jdk7:${Versions.Kotlin}"
+    private val kotlin =
+        Library(
+            "org.jetbrains.kotlin:kotlin-sdtlib-jdk7:${Versions.Kotlin}",
+            Type.IMPLEMENTATION
+        )
 
     private val androidKotlinKore =
         Library(
@@ -113,6 +118,11 @@ object Libraries {
             "com.squareup.okhttp3:logging-interceptor:${Versions.Okhttp}",
             Type.IMPLEMENTATION
         )
+    private val sandwich =
+        Library(
+            "com.github.skydoves:sandwich:${Versions.Sandwich}",
+            Type.IMPLEMENTATION
+        )
 
     // coroutines
     private val coroutines =
@@ -173,8 +183,9 @@ object Libraries {
             Type.KAPT
         )
 
-    val androidCore = listOf(
+    val core = listOf(
         androidKotlinKore, lifecycleKtx,
+//        kotlin
     )
 
     val ui = listOf(
@@ -185,7 +196,7 @@ object Libraries {
     )
 
     val network = listOf(
-        retrofit, retrofitMoshiConverter, okhttp, okhttpLogging
+        retrofit, retrofitMoshiConverter, okhttp, okhttpLogging, sandwich
     )
 
     val async = listOf(

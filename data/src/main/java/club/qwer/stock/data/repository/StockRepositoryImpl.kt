@@ -1,17 +1,15 @@
 package club.qwer.stock.data.repository
 
-import club.qwer.stock.data.response.StockPriceInfoResponse
-import club.qwer.stock.data.source.remote.api.StockService
-import club.qwer.stock.data.source.remote.api.StockServiceProvider
-import timber.log.Timber
+import club.qwer.stock.data.model.StockInfoModel
+import club.qwer.stock.data.model.toStockInfoModel
+import club.qwer.stock.data.source.remote.api.StockPriceApiService
+import club.qwer.stock.data.source.remote.api.StockPriceApiServiceFactory
 import javax.inject.Inject
 
-internal class StockRepositoryImpl @Inject constructor(stockServiceProvider: StockServiceProvider) :
-    BaseRepository<StockService>(stockServiceProvider.getService()), StockRepository {
+internal class StockRepositoryImpl @Inject constructor(stockServiceProvider: StockPriceApiServiceFactory) :
+    BaseRepository<StockPriceApiService>(stockServiceProvider.getService()), StockRepository {
 
-    override suspend fun getStockInfo(): List<StockPriceInfoResponse.StockPriceInfoDto> {
-        val response = service.getStockPriceInfo()
-        Timber.d("### response:${response}")
-        return response.response.body.items.item
+    override suspend fun getStockInfoList(likeCode: Int?): List<StockInfoModel> {
+        return call { service.getStockPriceInfo() }.response.body.items.item.map { it.toStockInfoModel() }
     }
 }

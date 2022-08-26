@@ -1,14 +1,18 @@
 package club.qwer.stock.data.source.remote.api
 
-import club.qwer.stock.data.response.StockPriceInfoResponse
+import club.qwer.stock.data.source.remote.dto.response.StockPriceInfoResponse
+import com.skydoves.sandwich.ApiResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface StockService {
+interface StockPriceApiService {
     companion object {
         private const val SERVICE_KEY =
             "ynoWq1I6T96xXvG7Hpc3UuR4eNJYUq1gzuQ7ATN7oU8%2FwOyiqMiSFFbwTxgoe1ZKtnk2qsljTtry%2BlX3MbWiuw%3D%3D"
-        private const val KEY2 = "ynoWq1I6T96xXvG7Hpc3UuR4eNJYUq1gzuQ7ATN7oU8/wOyiqMiSFFbwTxgoe1ZKtnk2qsljTtry+lX3MbWiuw=="
+        private const val KEY2 =
+            "ynoWq1I6T96xXvG7Hpc3UuR4eNJYUq1gzuQ7ATN7oU8/wOyiqMiSFFbwTxgoe1ZKtnk2qsljTtry+lX3MbWiuw=="
+
+        private const val KEYKEY = ""
     }
 
     @GET("getStockPriceInfo")
@@ -19,5 +23,5 @@ interface StockService {
         @Query("serviceKey") serviceKey: String = KEY2,
         @Query("numOfRows") offsetCount: Int = 10,
         @Query("pageNo") pageNumber: Int? = null
-    ): StockPriceInfoResponse
+    ): ApiResponse<StockPriceInfoResponse>
 }

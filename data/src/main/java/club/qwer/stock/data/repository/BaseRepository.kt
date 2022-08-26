@@ -1,22 +1,21 @@
 package club.qwer.stock.data.repository
 
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import com.skydoves.sandwich.ApiResponse
+import com.skydoves.sandwich.message
 
 internal abstract class BaseRepository<SVC>(val service: SVC) {
-    protected suspend fun <T> call(apiCall: suspend () -> T): T {
-        val value = apiCall.invoke()
-        return value
+    protected suspend fun <T> call(apiCall: suspend () -> ApiResponse<T>): T {
+        return when(val response = apiCall.invoke()) {
+            is ApiResponse.Success -> response.data
+            is ApiResponse.Failure.Error -> {
+                // handle error
+                throw Exception(response.message())
+            }
+            is ApiResponse.Failure.Exception -> {
+                // handle exception
+                throw Exception(response.message())
+            }
+        }
     }
-}
-
-@Module
-@InstallIn(SingletonComponent::class)
-internal abstract class RepositoryModule {
-
-    @Binds
-    abstract fun bindStockRepository(stockRepository: StockRepositoryImpl): StockRepository
 }
 
