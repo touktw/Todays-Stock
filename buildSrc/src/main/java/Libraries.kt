@@ -184,7 +184,8 @@ object Libraries {
         )
 
     val core = listOf(
-        androidKotlinKore, lifecycleKtx, kotlin
+        androidKotlinKore, lifecycleKtx,
+//        kotlin
     )
 
     val ui = listOf(

@@ -15,7 +15,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.lang.reflect.Type
 import java.util.concurrent.TimeUnit
 
-abstract class BaseServiceProvider<T>(
+abstract class BaseApiServiceFactory<T>(
     private val serviceClass: Class<T>,
     private val baseUrl: String,
     private val headerInterceptor: Interceptor = DefaultHeaderInterceptor()
