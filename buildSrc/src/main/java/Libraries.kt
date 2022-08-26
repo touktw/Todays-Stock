@@ -56,7 +56,7 @@ object Libraries {
             Type.IMPLEMENTATION
         )
 
-    private val androidKotlinKore =
+    private val androidCore =
         Library(
             "androidx.core:core-ktx:${Versions.CoreKtx}",
             Type.IMPLEMENTATION
@@ -184,15 +184,15 @@ object Libraries {
         )
 
     val core = listOf(
-        androidKotlinKore, lifecycleKtx,
-//        kotlin
+        androidCore
     )
 
     val ui = listOf(
         viewModelKtx,
         material,
         constraintLayout,
-        appcompat, activity, fragment
+        appcompat, activity, fragment,
+        lifecycleKtx
     )
 
     val network = listOf(
