@@ -3,7 +3,7 @@
 compileSdk = "31"
 
 # libraries versions
-kotlin = "1.6.10"
+kotlin = "1.7.0"
 
 androidxCore = "1.8.0"
 androidxActivity = "1.5.1"
