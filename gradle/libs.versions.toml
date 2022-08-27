@@ -1,0 +1,83 @@
+[versions]
+# app config
+compileSdk = "31"
+
+# libraries versions
+kotlin = "1.6.10"
+
+androidxCore = "1.8.0"
+androidxActivity = "1.5.1"
+androidxFragment = "1.5.2"
+androidxAppCompat = "1.4.2"
+androidxConstraintLayout = "2.1.4"
+androidx-lifecycle = "2.5.1"
+okhttp = "4.9.3"
+retrofit = "2.9.0"
+moshi = "1.12.0"
+sandwich = "1.2.7"
+dagger = "2.43.2"
+coroutines = "1.6.1"
+androidMaterial = "1.6.1"
+timber = "5.0.1"
+
+androidGradlePlugin = "7.2.2"
+hiltAndroidPlugin = "2.43.2"
+kotlinAndroidPlugin = "1.7.10"
+
+[libraries]
+#core
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
+
+#ui
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "androidxActivity" }
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "androidxFragment" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidxConstraintLayout" }
+android-material = { group = "com.google.android.material", name = "material", version.ref = "androidMaterial" }
+
+#network
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-moshi-converter = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+sandwich = { group = "com.github.skydoves", name = "sandwich", version.ref = "sandwich" }
+
+#lifecycle
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
+
+#hilt
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "dagger" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "dagger" }
+
+#coroutines
+coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+
+#etc
+moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi" }
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+
+# build-module
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+android-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroidPlugin" }
+
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinAndroidPlugin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+
+version-catalog-update = "nl.littlerobots.version-catalog-update:0.6.0"
+
+
+[bundles]
+android-ui = ["androidx-activity-ktx", "androidx-fragment-ktx", "androidx-appcompat", "androidx-constraintlayout", "android-material"]
+network = ["retrofit", "retrofit-moshi-converter", "okhttp", "okhttp-logging-interceptor", "sandwich"]
+android-lifcycle = ["androidx-lifecycle-viewmodel-ktx"]
+hilt = ["hilt-android"]
+hilt-kapt = ["hilt-compiler"]
+coroutines = ["coroutines-core", "coroutines-android"]
+utilities = ["timber"]

@@ -1,18 +1,12 @@
 plugins {
-    id("com.android.library")
-    id("com.google.dagger.hilt.android")
+    id("stock.android.library")
+    id("dagger.hilt.android.plugin")
     kotlin("android")
     kotlin("kapt")
 }
 
 android {
-    compileSdk = AppConfig.compileSdk
-
     defaultConfig {
-        minSdk = AppConfig.minSdk
-        targetSdk = AppConfig.targetSdk
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -25,21 +19,10 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }
 
 dependencies {
-
-    implementation(Libraries.core)
-    implementation(Libraries.async)
-    implementation(Libraries.di)
-    implementation(Libraries.etc)
-
-    testImplementationAll()
+    implementation(libs.bundles.hilt)
+    kapt(libs.bundles.hilt.kapt)
+    implementation(libs.bundles.coroutines)
 }
