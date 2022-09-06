@@ -20,6 +20,8 @@ coroutines = "1.6.1"
 androidMaterial = "1.6.1"
 timber = "5.0.1"
 
+androidxNavigation = "2.5.1"
+
 androidGradlePlugin = "7.2.2"
 hiltAndroidPlugin = "2.43.2"
 kotlinAndroidPlugin = "1.7.10"
@@ -62,6 +64,11 @@ timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "tim
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 
+# android navigation
+androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "androidxNavigation" }
+androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "androidxNavigation" }
+
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
@@ -74,7 +81,9 @@ version-catalog-update = "nl.littlerobots.version-catalog-update:0.6.0"
 
 
 [bundles]
-android-ui = ["androidx-activity-ktx", "androidx-fragment-ktx", "androidx-appcompat", "androidx-constraintlayout", "android-material"]
+android-ui = ["androidx-activity-ktx", "androidx-fragment-ktx",
+    "androidx-appcompat", "androidx-constraintlayout", "android-material",
+    "androidx-navigation-fragment", "androidx-navigation-ui"]
 network = ["retrofit", "retrofit-moshi-converter", "okhttp", "okhttp-logging-interceptor", "sandwich"]
 android-lifcycle = ["androidx-lifecycle-viewmodel-ktx"]
 hilt = ["hilt-android"]
