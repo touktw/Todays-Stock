@@ -1,8 +1,9 @@
 pluginManagement {
+    includeBuild("build-module")
     repositories {
-        gradlePluginPortal()
         google()
         mavenCentral()
+        gradlePluginPortal()
     }
 }
 dependencyResolutionManagement {
@@ -12,6 +13,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Todays Stock"
+rootProject.name = "todays-stock"
 include(":app")
 include(":data")
+include(":domain")

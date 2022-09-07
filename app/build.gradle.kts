@@ -1,21 +1,15 @@
 plugins {
-    id("com.android.application")
-    id("com.google.dagger.hilt.android")
+    id("stock.android.application")
+    id("dagger.hilt.android.plugin")
     kotlin("android")
     kotlin("kapt")
 }
 
 android {
-    compileSdk = AppConfig.compileSdk
-
     defaultConfig {
         applicationId = "club.qwer.stock"
-        minSdk = AppConfig.minSdk
-        targetSdk = AppConfig.targetSdk
-        versionCode = AppConfig.versionCode
-        versionName = AppConfig.versionName
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        versionCode = 1
+        versionName = "1.0.0"
     }
 
     buildTypes {
@@ -26,28 +20,19 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
     kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        viewBinding = true
+
     }
 }
 
 dependencies {
+    implementation(project(":domain"))
     implementation(project(":data"))
 
-    implementation(Libraries.androidCore)
-    implementation(Libraries.ui)
-    implementation(Libraries.network)
-    implementation(Libraries.async)
-    implementation(Libraries.etc)
-    implementation(Libraries.di)
-
-    testImplementationAll()
-
+    implementation(libs.bundles.android.ui)
+    implementation(libs.bundles.network)
+    implementation(libs.bundles.hilt)
+    kapt(libs.bundles.hilt.kapt)
+    implementation(libs.bundles.coroutines)
+    implementation(libs.bundles.utilities)
 }
