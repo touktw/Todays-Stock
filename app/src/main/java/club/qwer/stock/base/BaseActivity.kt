@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.ContentLoadingProgressBar
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
@@ -65,5 +66,18 @@ abstract class BaseActivity<VB : ViewBinding, VM : BaseViewModel> : AppCompatAct
                 }
                 .collect()
         }
+    }
+
+    private val progressBar: ContentLoadingProgressBar? by lazy {
+        _viewBinding.javaClass.fields.find { it.type == ContentLoadingProgressBar::class.java }
+            ?.get(_viewBinding) as? ContentLoadingProgressBar
+    }
+
+    fun showProgress() {
+        progressBar?.show()
+    }
+
+    fun hideProgress() {
+        progressBar?.hide()
     }
 }

@@ -95,4 +95,12 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
     ) {
         findNavController().navigate(resId)
     }
+
+    protected fun showProgress() {
+        (activity as? BaseActivity<*, *>)?.showProgress()
+    }
+
+    protected fun hideProgress() {
+        (activity as? BaseActivity<*, *>)?.hideProgress()
+    }
 }
