@@ -1,4 +1,4 @@
-package club.qwer.stock.domain
+package club.qwer.stock.domain.di
 
 import club.qwer.stock.domain.usecase.GetRandomStockListUseCase
 import dagger.Binds

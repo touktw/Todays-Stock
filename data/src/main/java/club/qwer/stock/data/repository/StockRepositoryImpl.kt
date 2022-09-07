@@ -6,12 +6,12 @@ import club.qwer.stock.domain.model.StockInfo
 import club.qwer.stock.domain.repository.StockRepository
 import javax.inject.Inject
 
-internal class StockRepositoryImpl @Inject constructor(stockPriceApiService: StockPriceApiService) :
-    BaseRepository<StockPriceApiService>(stockPriceApiService), StockRepository {
+internal class StockRepositoryImpl @Inject constructor(private val stockPriceApiService: StockPriceApiService) :
+    BaseRepository(), StockRepository {
     private val stockInfoMapper = StockInfoMapper()
 
     override suspend fun getStockInfoList(likeCode: Int?): List<StockInfo> {
-        return call { service.getStockPriceInfo() }.response.body.items.item.map {
+        return call { stockPriceApiService.getStockPriceInfo() }.response.body.items.item.map {
             stockInfoMapper(it)
         }
     }

@@ -1,6 +1,7 @@
-package club.qwer.stock.base
+package club.qwer.stock.di
 
 import android.content.Context
+import club.qwer.stock.base.StringResource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

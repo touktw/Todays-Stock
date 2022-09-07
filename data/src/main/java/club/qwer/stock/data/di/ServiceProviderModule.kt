@@ -1,4 +1,4 @@
-package club.qwer.stock.data.di.module
+package club.qwer.stock.data.di
 
 import club.qwer.stock.data.source.remote.api.ServiceFactory
 import club.qwer.stock.data.source.remote.api.StockPriceApiService
